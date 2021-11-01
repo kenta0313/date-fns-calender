@@ -23,6 +23,9 @@ const getCalendarArray = (date: Date) => {
 function App() {
   const [targetDate, setTargetDate] = useState(new Date());
   const calendar = getCalendarArray(targetDate);
+  const dateUpdate = (date: number) => {
+    alert(date)
+  }
 
   return (
     <div>
@@ -43,7 +46,9 @@ function App() {
           {calendar.map((weekRow, rowNum) => (
             <tr key={rowNum}>
               {weekRow.map(date => (
-                <td key={getDay(date)}>{getDate(date)}</td>
+                <td key={getDay(date)} onClick={() => dateUpdate(getDate(date))}>
+                  {getDate(date)}
+                </td>
               ))}
             </tr>
           ))}
